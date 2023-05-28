@@ -1,0 +1,884 @@
+/*Se crea tabla de alumnos metiendo las restricciones que se pidieron primary, not null, etc */
+create table alum_tesoem (
+id number (3),
+primary KEY (id),
+Matricula number (9) unique,
+Nombre varchar2 (30) not null,
+Apell_pa varchar2 (30),
+Apell_ma varchar2 (30),
+Carrera varchar2 (30),
+Grupo varchar2 (5),
+Semestre number (2),
+Edificio varchar2 (1),
+Promedio number (3)
+check (Promedio <=100)
+);
+
+delete from alum_tesoem;/* para borrar el contenido de la tabla*/
+select * from alum_tesoem;/* para seleccionar la tabla */
+drop table alum_tesoem; /* es para borrar la tabla por completo*/
+
+
+/*Se crea la funcion donde se puede actualizar, modificar, se le agrega un nombre y dentro de los parentesis nos indica que en caso de que falte alguno de los datos, se va a poner en automatico cada uno de los dafault indicados*/
+ create or replace procedure agregar_alum
+(m_id in number default 0,m_Matricula in number default 0, m_Nombre in varchar2 default 'nombre', m_Apell_pa in varchar2 default 'apellido_pa', m_Apell_ma in varchar2 default 'apellido_ma',
+ m_Carrera in varchar2 default 'carrera', m_Grupo in varchar2 default '00000', m_Semestre in number default 1, m_Edificio in varchar2 default '#', 
+ m_Promedio in number default 0)
+ as 
+ begin 
+ insert into alum_tesoem values (m_id,m_Matricula, m_Nombre, m_Apell_pa, m_Apell_ma, m_Carrera, m_Grupo,m_Semestre, m_Edificio, m_promedio);
+ /*Se esta indicando cuales son los atributos que se van a insertar de cada uno de los alumnos*/
+ end;
+ /* se ejecutan todos los datos que se pidieron dentro de alumnos, y se agregan  los 90 alumnos, a la tabla principal que es lo que la funcion va a realizar*/
+ execute agregar_alum (1,206020039,'Francelia Sharbat', 'Yescas','Bueno', 'ISC', '6S12', 6 , 'B', 95);
+ execute agregar_alum (2,213010021,'Emmanuel','López','Nicolás','IND','4I11',4,'F',93);
+ execute agregar_alum (3,210010034,'Denisse Elizabeth','Guzmán','Godínez','LG','5G11',5,'B',80);
+ execute agregar_alum (4,200020046,'Alexander','Aguilar','Velazquez','LG','6G11',6,'D',91);
+ execute agregar_alum (5,200020008,'Ariana Yamily','Sandoval','Torres','LG','6G11',6,'D',95);
+ execute agregar_alum (6,205020005,'Luis Alberto','Santiago','García','IER','6E11',6,'I',86);
+ execute agregar_alum (7,201020058,'Silvia','Rodriguez','Villa','LC','6C21',6 ,'I' , 86); 
+ execute agregar_alum (8,227020003,'Dylan Antonio','Granillo',	'González','TICS','2T11',2,	'E', 91);
+ execute agregar_alum (9,206020008,'Evelin Lizet','Cruz','Martínez','ISC','6S12',6,'B',91);
+ execute agregar_alum (10,206020047,'Ariana Estefania','Rodriguez','Monroy','ISC','6S12',6,'B',90);
+ execute agregar_alum (11,220020151,'Andrea','Pacheco','Galindo','LG','2G11',2,'C',93);
+ execute agregar_alum (12,220020210,'Kevin','Gonzales','Godinez','LG','6G11',6,'D',89);
+ execute agregar_alum (13,205020001,'Guadalupe','Hernández','Cruz','IER','6E11',6,'I',83);
+ execute agregar_alum (14,20002011,'Kevin Aron','Juarez','Juarez','LG','6G11',6,'D',81);
+ execute agregar_alum (15,202020101,'Hector Enrique','Medrano','Quezada','IAD','6AD12',6,'D',87);
+ execute agregar_alum (16,220020040,'Carlos Yael','Jimenez','Chirino','LG','2G22',2,'C',86);
+ execute agregar_alum (17,219020014,'Jorge Eduardo','Martinez','Martinez','ISA','4SA11',4,'F',91);
+ execute agregar_alum (18,219020019,'Uriel','Mendoza','Loza','ISC','3S11',3,'B',70);
+ execute agregar_alum (19,206010028,'Cristian Alejandro','Romero','Rojano','ISC','7S11',7,'B',93);
+ execute agregar_alum (20,206020028,'Brayan','Rodríguez','Rodríguez','ISC','6S11',6,'A',94);
+ execute agregar_alum (21,212020059,'Karla Michelle','Hernandez','Orozco','IAD','4AD12',4,'D',80);
+ execute agregar_alum (22,222010001,'Sandra Lizbeth','Arrieta','Torales','IAD','3AD11',3,'D',95);
+ execute agregar_alum (23,222010012,'Leonardo','Lobaton','Vazquez','IAD','3AD11',3,'D',87);
+ execute agregar_alum (24,200200151,'Andrea','Pacheco','Galindo','LG','2G11',2,'C',93);
+ execute agregar_alum (25,216020086,'Alexis','Gomez','Medina','ISC','3S11',3,'B',80);
+ execute agregar_alum (26,220010014,'Juan Sebastian','Marin','Robles','IAD','3AD11',3,'D',80);
+ execute agregar_alum (27,192020028,'Itzel','Montalvo','Arano','IAD','5AD11',5,'D',83);
+ execute agregar_alum (28,206020014,'Luis Alfredo','Guzmán','Collado','ISC','6S11',6,'A',70);
+ execute agregar_alum (29,214020146,'Kate Leslie','De la rosa','Chavez','IA','8A12',8,'H',80);
+ execute agregar_alum (30,193020078,'Jeny Guadalupe','Cruz','Leal','IND','6I12',6,'F',82);
+ execute agregar_alum (31,192010026,'Albertossi De Jesus','Landeros','Gomes','IAD','8AD11',8,'E',80);
+ execute agregar_alum (32,230010037,'Angel Guadalupe','Vazquez','Castillo','LG','1G21',1,'D',78);
+ execute agregar_alum (33,2010253,'Miriam','Rojas','Nicolas','LC','6C11',6,'I',76);
+ execute agregar_alum (34,201020074,'Evelin','Cruz','Herrera','LC','6C11',6,'I',90);
+ execute agregar_alum (35,203020077,'Eduardo Jesús','Garcia','Ferreira','IND','6I12',6,'E',83);
+ execute agregar_alum (36,186010117,'Angel Rafael','Mercado','Martinez','ISC','4S21',4,'A',83);
+ execute agregar_alum (37,216020104,'Mariana','Valdes','Munguía','ISC','4S21',4,'A',85);
+ execute agregar_alum (38,195020004,'Jesús Uriel','Valdez','Bobadilla','IER','7E11',7,'I',91);
+ execute agregar_alum (39,102010014,'Juan de Dios','Sánchez','Durán','IND','7I11',7,'F',95);
+ execute agregar_alum (40,239010023,'Andy Alberto','Sarmiento','Astudillo','ISA','1SA11',1,'E',87);	
+ execute agregar_alum (41,239010035,'Israel','Legorreta','Dominguez','ISA','1SA11',1,'E',75);	
+ execute agregar_alum (42,224020038,'Josué Azdhriel','Morales','Perez','ISA','2SA11',2,'D',87);
+ execute agregar_alum (43,229020029,'Bruno','Esquivel','Bautista','ISA','2SA11',2,'D',82);
+ execute agregar_alum (44,223020004,'Ricardo','Juárez','Arrieta','IND','2I11',2,'E',85);
+ execute agregar_alum (45,223020008,'Jonathan','Ramírez','Islas','IND','2I11',2,'E',89);
+ execute agregar_alum (46,201020065,'Jonathan','Duran','Ildefonso','LC','6C11',6,'I',78);
+ execute agregar_alum (47,20102002,'Luis Armando','Díaz','Islas','LC','6C11',6,'I',82);
+ execute agregar_alum (48,220020034,'Victor Hugo','Centeno','García','LG','2G11',2,'C',89);
+ execute agregar_alum (49,215020014,'Erick Alejandro','Martinez','Ordaz','IER','2E11',2,'I',70);
+ execute agregar_alum (50,183010096,'Erik Mauricio','Sanchez','Cruz','IND','8I12',8,'F',80);
+ execute agregar_alum (51,201020020,'Karen','Alvarado','Luna','LC','6C11',6,'I',85);
+ execute agregar_alum (52,223020028,'Ivan Yael','Mendoza','Xihuilt','IND','2I11',2,'E',87);
+ execute agregar_alum (53,224020036,'Luis Orlando','Rojas','Limón','IA','2A11',2,'H',86);
+ execute agregar_alum (54,201020017,'Ana Cristy','Alfaro','De Jesus','LC','6C21',6,'I',82);
+ execute agregar_alum (55,201020034,'Carlos Alberto','Largo','Camacho','LC','6C21',6,'I',80);
+ execute agregar_alum (56,207010011,'Dulce Maria','Ortiz','Reyes','TICS','7T11',7,'E',91);
+ execute agregar_alum (57,207010014,'Pamela','Perez','Ayala','TICS','7T11',7,'E',88);
+ execute agregar_alum (58,207010006,'Angel Gabriel','Hernández','Garcia','TICS','7T11',7,'E',93);
+ execute agregar_alum (59,217010003,'Pablo Uriel','Paz','Zuñiga','TICS','5T11',5,'E',88);
+ execute agregar_alum (60,215020003,'Alexis','Carbajal','Gómez','IER','4E11',4,'I',86);
+ execute agregar_alum (61,215020004,'Monica Valeria','Huerta','García','IER','4E11',4,'I',96);
+ execute agregar_alum (62,215020002,'Karen Citlali','Arenas','Carmona','IER','4E11',4,'I',94);
+ execute agregar_alum (63,202020082,'Blanca Flor','Albarran','Flor','IAD','6AD12',6,'D',90);
+ execute agregar_alum (64,202020091,'Mariana Yaquelin','Becerra','Flores','IAD','6AD12',6,'D',95);
+ execute agregar_alum (65,202020096,'Gabriela Jocelin','Cadena','Castro','IAD','6AD12',6,'D',87);
+ execute agregar_alum (66,215020017,'Luis Alfredo','Torres','Hernández','IER','4E11',4,'I',83);
+ execute agregar_alum (67,225020006,'Kevin Uriel','Rodríguez','Aguilar','IER','2E11',2,'I',94);
+ execute agregar_alum (68,215020001,'Ricardo','García','López','IER','4E11',4,'I',86);
+ execute agregar_alum (69,224010003,'Miguel Angel','García','Huerta','IA','3A11',3,'E',84);
+ execute agregar_alum (70,224010008,'Brenda','Montiel','Juarez','IA','3A11',3,'H',82);
+ execute agregar_alum (71,214020017,'Kareini','Domínguez','Samano','IA','3A11',3,'H',80);
+ execute agregar_alum (72,224010006,'Brayan Isaac','Platero','Dominguez','IA','3A11',3,'H',84);
+ execute agregar_alum (73,224010001,'Cecilia','Abad','Ramos','IA','3A11',3,'H',73);
+ execute agregar_alum (74,224010010,'Adalid','Arguello','Carretero','IA','3A11',3,'H',86);
+ execute agregar_alum (75,224010004,'Diana Abigail','Montes','Hernández','IA','3A11',3,'E',90);
+ execute agregar_alum (76,224010007,'Casandra','Victoria','Reyes','IA','3A11',3,'H',93);
+ execute agregar_alum (77,197020009,'Jair Abinadar','Montalvo','Rivera','TICS','8T11',8,'E',94);
+ execute agregar_alum (78,197020011,'Paul','Torres','Aguillon','TICS','8T11',8,'E',90);
+ execute agregar_alum (79,197020004,'Mauricio','Lara','Jiménez','TICS','8T11',8,'E',92);
+ execute agregar_alum (80,221020042,'Gerardo Iván','Ceron','Ramírez','LC','2C11',2,'I',92);
+ execute agregar_alum (81,197020020,'Christian Alexis','Hernández','Padilla','TICS','8T11',8,'E',92);
+ execute agregar_alum (82,197020015,'Daniel','Ramirez','Romero','TICS','8T11',8,'E',80);
+ execute agregar_alum (83,221020073,'Vicente Alejandro','Angel','Luna','LC','2C11',2,'I',95);
+ execute agregar_alum (84,219020058,'Armando','Mercado','Lopez','ISA','4SA11',4,'E',82);
+ execute agregar_alum (85,229020085,'Gibran Andres','Robledo','Barron','ISA','2SA11',2,'D',86);
+ execute agregar_alum (86,219020038,'Arturo Natanael','Serrano','Galindo','ISA','4SA11',4,'E',76);
+ execute agregar_alum (87,229020066,'Misael','García','Galicia','ISA','2SA11',2,'D',87);
+ execute agregar_alum (88,229020043,'Angel','Santillan','Coria','ISA','2SA11',2,'D',80);
+ execute agregar_alum (89,193020111,'José Raúl','Neri','Jiménez','IND','8I12',8,'F',84);
+ execute agregar_alum (90,223020023,'Barrón','Mora','Israel','IND','2I11',2,'E',85);
+ 
+ select * from alum_tesoem; /* para seleccionar la tabla y que muestre a todos los alumnos insertados atraves de la funcion*/
+ delete alum_tesoem;/* borrar el contenido de la tabla*/
+ 
+ 
+ /*CREACION DE TABLAS POR CARRERA PARA LOS ALUMNOS*/
+/*SISTEMAS*/
+/*Se crea la tabla con los atributos*/
+create table ISC_1(
+id number (3),
+ Matricula number (9),
+ Nombre varchar2 (50),
+ Apellidos varchar2 (50),
+ Grupo varchar2 (4),
+ Edificio varchar2 (1)
+ );
+ 
+ drop table ISC_1;
+ delete ISC_1;
+ 
+ /*Se crea la funcion agregandole un nombre, dentro de la cual se puede agregar o actualizar el procedimiento almacenado*/
+create or replace procedure alum_ISC
+as
+begin
+insert into ISC_1 (id, matricula, Nombre, Apellidos, Grupo, Edificio)/*  se insertaran en la tabla creada de sistemas los campos que se seleccionaron de la tabla principal */
+select id, Matricula, Nombre, Apell_pa | | ' ' | |  Apell_ma, Grupo, Edificio  from alum_tesoem /* se van a seleccionar los campos que se mandaran a traer de la tabla principial alumnos, concatenando unicamente apellido materno y apellido paterno*/
+where Carrera = 'ISC'; /*en donde unicamente llamara a los alumnos que tengan como carrera "ISC" que son todos los de sistemas */
+end; /*finaliza la funcion*/
+
+execute alum_ISC; /* es para ejecutar el procedimiento almacenado*/
+select* from ISC_1;/* para seleccionar la tabla de sistemas en donde apareceran los 10 alumnos de sistemas unicamente*/ 
+delete from ISC_1;/* se borra el contenido de la tabla*/
+
+/*En cada una de las tablas de las carreras es practicamente lo mismo solo que cambia los nombres de tablas, procedimientos, y obviamente los datos de los alumnos al insertarlos dependiendo de la carrera*/
+
+/*TICS*/
+create table TIC(
+id number (3),
+ Matricula number (9),
+ Nombre varchar2 (50),
+ Apellidos varchar2 (50),
+ Grupo varchar2 (4),
+ Edificio varchar2 (1)
+ );
+
+create or replace procedure alum_TIC
+as
+begin
+insert into TIC (id, matricula, Nombre,Apellidos, Grupo, Edificio)
+select id, Matricula,Nombre, Apell_pa | | ' ' | |  Apell_ma, Grupo, Edificio  from alum_tesoem 
+where Carrera = 'TICS';
+end;
+
+execute alum_TIC;
+select* from TIC;
+delete from TIC;
+
+/* Contabilidad*/
+create table CONT(
+id number (3),
+ Matricula number (9),
+ Nombre varchar2 (50),
+ Apellidos varchar2 (50),
+ Grupo varchar2 (4),
+ Edificio varchar2 (1)
+ );
+
+drop table CONT;
+
+create or replace procedure alum_CONT
+as
+begin
+insert into CONT (id, matricula, Nombre,Apellidos, Grupo, Edificio)
+select id, Matricula, Nombre, Apell_pa | | ' ' | |  Apell_ma, Grupo, Edificio  from alum_tesoem 
+where Carrera = 'LC';
+end;
+
+execute alum_CONT;
+select* from CONT;
+delete from CONT;
+
+/*Gastronomia*/
+create table GA(
+ id number (3),
+ Matricula number (9),
+ Nombre varchar2 (50),
+ Apellidos varchar2 (50),
+ Grupo varchar2 (4),
+ Edificio varchar2 (1)
+ );
+ 
+create or replace procedure alum_GA
+as
+begin
+insert into GA (id, matricula, Nombre,Apellidos, Grupo, Edificio)
+select id, Matricula, Nombre, Apell_pa | | ' ' | |  Apell_ma, Grupo, Edificio  from alum_tesoem 
+where Carrera = 'LG';
+end;
+
+execute alum_GA;
+select* from GA;
+delete from GA;
+/*Industrial*/
+create table INDU(
+id number (3),
+ Matricula number (9),
+ Nombre varchar2 (50),
+ Apellidos varchar2 (50),
+ Grupo varchar2 (4),
+ Edificio varchar2 (1)
+ );
+ 
+drop table INDU;
+
+create or replace procedure alum_INDU
+as
+begin
+insert into INDU (id, matricula, Nombre,Apellidos, Grupo, Edificio)
+select id, Matricula, Nombre, Apell_pa | | ' ' | |  Apell_ma, Grupo, Edificio  from alum_tesoem 
+where Carrera = 'IND';
+end;
+
+execute alum_INDU;
+select* from INDU;
+delete from INDU;
+
+/* Energias Renovables*/
+create table ER(
+id number (3),
+ Matricula number (9),
+ Nombre varchar2 (50),
+ Apellidos varchar2 (50),
+ Grupo varchar2 (4),
+ Edificio varchar2 (1)
+ );
+ 
+create or replace procedure alum_ER
+as
+begin
+insert into ER (id, matricula, Nombre,Apellidos, Grupo, Edificio)
+select id, Matricula, Nombre, Apell_pa | | ' ' | |  Apell_ma, Grupo, Edificio  from alum_tesoem 
+where Carrera = 'IER';
+end;
+
+execute alum_ER;
+select* from ER;
+delete from ER;
+
+/* Administración*/
+create table AD(
+id number (3),
+ Matricula number (9),
+ Nombre varchar2 (50),
+ Apellidos varchar2 (50),
+ Grupo varchar2 (9),
+ Edificio varchar2 (1)
+ );
+ 
+ drop table AD;
+ 
+create or replace procedure alum_AD
+as
+begin
+insert into AD (id, matricula, Nombre,Apellidos, Grupo, Edificio)
+select id, Matricula, Nombre, Apell_pa | | ' ' | |  Apell_ma, Grupo, Edificio  from alum_tesoem 
+where Carrera = 'IAD';
+end;
+
+execute alum_AD;
+select* from AD;
+delete from IAD;
+
+/* Sistemas Automotrices*/
+create table AUT(
+id number (3),
+ Matricula number (9),
+ Nombre varchar2 (50),
+ Apellidos varchar2 (50),
+ Grupo varchar2 (9),
+ Edificio varchar2 (1)
+ );
+ 
+create or replace procedure alum_AUT
+as
+begin
+insert into AUT (id, matricula, Nombre,Apellidos, Grupo, Edificio)
+select id, Matricula, Nombre, Apell_pa | | ' ' | |  Apell_ma, Grupo, Edificio  from alum_tesoem 
+where Carrera = 'ISA';
+end;
+
+execute alum_AUT;
+select* from AUT;
+delete from AUT;
+
+/*Ambiental*/
+ create table AMB(
+ id number (3),
+ Matricula number (9),
+ Nombre varchar2 (50),
+ Apellidos varchar2 (50),
+ Grupo varchar2 (8),
+ Edificio varchar2 (1)
+ );
+ 
+create or replace procedure alumnos_AMB
+as
+begin
+insert into AMB (id, matricula, Nombre,Apellidos, Grupo, Edificio)
+select id, Matricula, Nombre, Apell_pa | | ' ' | |  Apell_ma, Grupo, Edificio  from alum_tesoem 
+where Carrera = 'IA';
+end;
+
+execute alumnos_AMB;
+select * from AMB;
+delete from AMB;
+
+
+
+
+/*TABLA DE  PROFESORES*/
+/*Se crea la tabla principal de profesores con las restrcciones que se pidieron*/
+create table profe_tesoem (
+id number (4),
+primary KEY (id),
+Num_empleado number (9),
+Nombre varchar2 (30)not null,
+Apell_pa varchar2 (30),
+Apell_ma varchar2 (30),
+Carrera varchar2 (30),
+Nombre_clase varchar (60),
+grupo varchar (5)
+);
+
+select * from profe_tesoem;/*selecciona la tabla y muestra el contenido*/
+delete from prof_tesoem;/*borra el contenido de la tabla*/
+drop table profe_tesoem;/*borra toda la tabla por completo*/
+
+
+/*Se crea la funcion donde se puede actualizar, modificar, se le agrega un nombre y dentro de los parentesis nos indica que en caso de que falte alguno de los datos, se va a poner en automatico cada uno de los dafault indicados*/
+create or replace procedure agregar_maestros
+(m_id in number default 0, m_Num_empleado in number default 0, m_nombre in varchar2 default 'nombre', m_Apell_pa in varchar2 default 'apellido_pa', 
+ m_Apell_ma in varchar2 default 'apellido_ma', m_carrera in varchar2 default 'carrera', m_Nombre_clase in varchar2 default 'clase', m_grupo in varchar2 default 'grupo')
+ as 
+ begin 
+ insert into profe_tesoem values (m_id,m_Num_empleado, m_nombre, m_Apell_pa, m_Apell_ma, m_carrera, m_Nombre_clase, m_grupo);
+  /*Se esta indicando cuales son los atributos que se van a insertar de cada uno de los profesores*/
+ end;
+ 
+  /* se ejecutan todos los datos que se pidieron dentro de profesores, y se agregan  los diferentes profesores con sus diferentes carreras, a la tabla principal que es lo que la funcion va a realizar*/
+ execute agregar_maestros (1,681,'Francisco Raul','Salvador','Ginez','ISC','Redes de Computadoras','6S11');
+ execute agregar_maestros (2,681,'Francisco Raul','Salvador','Ginez','ISC','Redes de Computadoras','6S12');
+ execute agregar_maestros (3,681,'Francisco Raul','Salvador','Ginez','ISC','Conmutación y Enrutamiento de Computadoras','7S11');
+ execute agregar_maestros (4,209,'Maria Cristina','Rodriguez','Mendias','ISC','Investigación de Operaciones','3S11');
+ execute agregar_maestros (5,209,'Maria Cristina','Rodriguez','Mendias','ISC','Métodos Numericos','4S11');
+ execute agregar_maestros (6,209,'Maria Cristina','Rodriguez','Mendias','ISC','Métodos Numericos','4S12');
+ execute agregar_maestros (7,209,'Maria Cristina','Rodriguez','Mendias','ISC','Métodos Numericos','4S21');
+ execute agregar_maestros (8,760,'Oscar Abimael','Sanchez','De los Santos','ISC','Fundamentos de Base de Datos','4S11');
+ execute agregar_maestros (9,760,'Oscar Abimael','Sanchez','De los Santos','ISC','Fundamentos de Base de Datos','4S12');
+ execute agregar_maestros (10,760,'Oscar Abimael','Sanchez','De los Santos','ISC','Fundamentos de Ingenieria de Software','5S11');
+ execute agregar_maestros (11,760,'Oscar Abimael','Sanchez','De los Santos','IAD','Aplicaciones empresariales para las MYPYMES','7AD11');
+ execute agregar_maestros (12,760,'Oscar Abimael','Sanchez','De los Santos','TICS','Metodologias Agiles','7T11');
+ execute agregar_maestros (13,209,'Maria Cristina','Rodriguez','Mendias','ISC','Simulación','4S11');
+ execute agregar_maestros (14,209,'Maria Cristina','Rodriguez','Mendias','ISC','Simulación','4S12');
+ execute agregar_maestros (15,209,'Maria Cristina','Rodriguez','Mendias','ISC','Simulación','4S21');
+ execute agregar_maestros (16,147,'Gerardo','Nava','Hernandez','ISC','Graficación','5S11');
+ execute agregar_maestros (17,147,'Gerardo','Nava','Hernandez','ISC','Lenguajes de Interfaz','6S11');
+ execute agregar_maestros (18,147,'Gerardo','Nava','Hernandez','ISC','Lenguajes de Interfaz','6S12');
+ execute agregar_maestros (19,147,'Gerardo','Nava','Hernandez','ISC','Lenguajes de Interfaz','6S21');
+ execute agregar_maestros (20,212,'Gustavo Moises','Romero','Gonzalez','ISC','Sistemas Operativos','5S11');
+ execute agregar_maestros (21,212,'Gustavo Moises','Romero','Gonzalez','ISC','Taller de Sistemas Operativos','6S11');
+ execute agregar_maestros (22,212,'Gustavo Moises','Romero','Gonzalez','ISC','Taller de Sistemas Operativos','6S12');
+ execute agregar_maestros (23,212,'Gustavo Moises','Romero','Gonzalez','ISC','Taller de Sistemas Operativos','6S21');
+ execute agregar_maestros (24,212,'Gustavo Moises','Romero','Gonzalez','TICS','Bases de Datos Distribuidas','5T11');
+ execute agregar_maestros (25,212,'Gustavo Moises','Romero','Gonzalez','TICS','Sistemas Operativos 1','6T11');
+ execute agregar_maestros (26,212,'Gustavo Moises','Romero','Gonzalez','TICS','Sistemas Operativos 2','7T11');
+ execute agregar_maestros (27,243,'Albertossi','Landeros','Rojas','ISC','Principios Electronicos','4S11');
+ execute agregar_maestros (28,243,'Albertossi','Landeros','Rojas','ISC','Principios Electronicos','4S12');
+ execute agregar_maestros (29,243,'Albertossi','Landeros','Rojas','ISC','Principios Electronicos','4S21');
+ execute agregar_maestros (30,243,'Albertossi','Landeros','Rojas','ISC','Sistemas Programables','7S11');
+ execute agregar_maestros (31,243,'Albertossi','Landeros','Rojas','TICS','Circuitos Eléctricos y Eléctronicos','4T11');
+ execute agregar_maestros (32,188,'Luis Israel','Guerrero','Lucio','LG','Microbiología de los alimentos','1G11');
+ execute agregar_maestros (33,188,'Luis Israel','Guerrero','Lucio','LG','Microbiología de los alimentos','1G21');
+ execute agregar_maestros (34,188,'Luis Israel','Guerrero','Lucio','LG','Quimica de los alimentos','3G11'); 
+ execute agregar_maestros (35,348,'Jose Luis','Villareal','Lopez','TICS','Analisis de señales y sistemas de comunicación','5T11');
+ execute agregar_maestros (36,348,'Jose Luis','Villareal','Lopez','TICS','Electricidad y Magnetismo','3T11');
+ execute agregar_maestros (37,348,'Jose Luis','Villareal','Lopez','TICS','Telecomunicaciones','6T11');
+ execute agregar_maestros (38,348,'Jose Luis','Villareal','Lopez','TICS','Administración y Seguridad de redes','8T11');
+ execute agregar_maestros (39,348,'Jose Luis','Villareal','Lopez','TICS','Administración y Seguridad de redes','8T21');
+ execute agregar_maestros (40,756,'Cesar Michael','Gonzalez','Serrano','IAD','Adminstración Financiera','6AD12');
+ execute agregar_maestros (41,756,'Cesar Michael','Gonzalez','Serrano','IAD','Economia','4AD11');
+ execute agregar_maestros (42,756,'Cesar Michael','Gonzalez','Serrano','IAD','Administracion de la Producción','6AD11');
+ execute agregar_maestros (43,756,'Cesar Michael','Gonzalez','Serrano','IAD','Finanzas Etrategicas para MIPYMES','8AD11');
+ execute agregar_maestros (44,694,'Beatriz','Cortez','Rodríguez','IAD','Relaciones Publicas','8AD12');
+ execute agregar_maestros (45,694,'Beatriz','Cortez','Rodríguez','IAD','Capital Humano','5AD11');
+ execute agregar_maestros (46,694,'Beatriz','Cortez','Rodríguez','IAD','Administración de la calidad','7AD11');
+ execute agregar_maestros (47,694,'Beatriz','Cortez','Rodríguez','LG','Dirección de establecimientos de Alimentos y Bebidas','8G11');
+ execute agregar_maestros (48,415,'Juan Carlos','Martínez','Hernández','IER','Sistemas Térmicos','6E11');
+ execute agregar_maestros (49,415,'Juan Carlos','Martínez','Hernández','IER','Termodinámica','4E11');
+ execute agregar_maestros (50,415,'Juan Carlos','Martínez','Hernández','IER','Macro moléculas','7E11');
+ execute agregar_maestros (51,698,'Alejandro','Bustamante','Duran','LG','Tendencias de la alta repostería','8G11');
+ execute agregar_maestros (52,698,'Alejandro','Bustamante','Duran','LG','Tendencias de la alta repostería','8G12');
+ execute agregar_maestros (53,698,'Alejandro','Bustamante','Duran','LG','Tendencias de la alta repostería','8G21');
+ execute agregar_maestros (54,698,'Alejandro','Bustamante','Duran','LG','Panaderia','4G21');
+ execute agregar_maestros (55,698,'Alejandro','Bustamante','Duran','LG','Introducción a la reposteria','5G11');
+ execute agregar_maestros (56,698,'Alejandro','Bustamante','Duran','LG','Introducción a la reposteria','5G21');
+ execute agregar_maestros (57,720,'Monserrat','Hernández','Flores','LG','Cocina internacional 1','6G11');
+ execute agregar_maestros (58,720,'Monserrat','Hernández','Flores','LG','Cocina internacional 1','6G21');
+ execute agregar_maestros (59,720,'Monserrat','Hernández','Flores','LG','Cocina internacional 1','6G22');
+ execute agregar_maestros (60,720,'Monserrat','Hernández','Flores','LG','Cultura y Patrimonio','2G22');
+ execute agregar_maestros (61,720,'Monserrat','Hernández','Flores','LG','Cultura y Patrimonio','2G21');
+ execute agregar_maestros (62,630,'Marco','Mejia','Villalpando','IA','Probabilidad y Estadística Ambiental','2A11');
+ execute agregar_maestros (63,630,'Marco','Mejia','Villalpando','IA','Producción más limpia','8A11');
+ execute agregar_maestros (64,630,'Marco','Mejia','Villalpando','IA','Producción más limpia','8A12'); 
+ execute agregar_maestros (65,630,'Marco','Mejia','Villalpando','IA','Residuos Valorisables','8A11');
+ execute agregar_maestros (66,630,'Marco','Mejia','Villalpando','IA','Residuos Valorisables','8A12');
+ execute agregar_maestros (67,630,'Marco','Mejia','Villalpando','IA','Toxicología Am biental','5A11');
+ execute agregar_maestros (68,630,'Marco','Mejia','Villalpando','IA','Biomquimica','3A11');
+ execute agregar_maestros (69,695,'Minandro','Camarillo','Cadena','IA','Calculo Diferencial','1a11');
+ execute agregar_maestros (70,695,'Minandro','Camarillo','Cadena','IA','Calculo Integral','2A11');
+ execute agregar_maestros (71,695,'Minandro','Camarillo','Cadena','IA','Calculo Vectorial','3A11');
+ execute agregar_maestros (72,695,'Minandro','Camarillo','Cadena','IA','Ecuaciones Diferenciales','4A11');
+ execute agregar_maestros (73,477,'Victor','Duarte','Zaragoza','IA','Fundamentos de Investigación','7A11'); 
+ execute agregar_maestros (74,477,'Victor','Duarte','Zaragoza','IA','Taller de investigación 1','6A11');
+ execute agregar_maestros (75,477,'Victor','Duarte','Zaragoza','IA','Manejo Integral del Suelo ','8A11');
+ execute agregar_maestros (76,477,'Victor','Duarte','Zaragoza','IA','Remediación del suelo','7A11');
+ execute agregar_maestros (77,918,'Victor Manuel','Fuentes','Olivares','IER','Automatismo','9E11');
+ execute agregar_maestros (78,918,'Victor Manuel','Fuentes','Olivares','IER','Circuitos eléctricos','4E11');
+ execute agregar_maestros (79,918,'Victor Manuel','Fuentes','Olivares','ISA','Análisis de circuitos eléctricos','4SA11');
+ execute agregar_maestros (80,918,'Victor Manuel','Fuentes','Olivares','IER','Instrumentación','7E11');
+ execute agregar_maestros (81,918,'Victor Manuel','Fuentes','Olivares','IER','Instalaciones eléctricas','6E11');
+ execute agregar_maestros (82,918,'Victor Manuel','Fuentes','Olivares','IER','Máquinas hidráulicas','6E11');
+ execute agregar_maestros (83,918,'Victor Manuel','Fuentes','Olivares','IER','Gestión empresarial','8E11');
+ execute agregar_maestros (84,697,'Juan Manuel','Estrada','Basurto','IND','Dibujo industrial','1I11');
+ execute agregar_maestros (85,697,'Juan Manuel','Estrada','Basurto','IND','Planeación y diseño de las instalaciones','7I11');
+ execute agregar_maestros (86,697,'Juan Manuel','Estrada','Basurto','IND','Diseño asistido por ordenador','6I21');
+ execute agregar_maestros (87,697,'Juan Manuel','Estrada','Basurto','ISA','Manufactura para los procesos de elementos automotrices ','3SA11');
+ execute agregar_maestros (88,697,'Juan Manuel','Estrada','Basurto','IND','Metrología','8I11');
+ execute agregar_maestros (89,697,'Juan Manuel','Estrada','Basurto','ISA','Tecnología y comportamiento de los materiales','2SA11');
+ execute agregar_maestros (90,64,'Jorge','Garcia','Nieva','IND','Calculo vectorial','3I11');
+ execute agregar_maestros (91,64,'Jorge','Garcia','Nieva','ISA','Algebra lineal','2SA11');
+ execute agregar_maestros (92,64,'Jorge','Garcia','Nieva','IND','Estadística inferencial I','4I12');
+ execute agregar_maestros (93,64,'Jorge','Garcia','Nieva','IND','Estadística inferencial II','4I12');
+ execute agregar_maestros (94,64,'Jorge','Garcia','Nieva','ISA','Estadística para administración','3SA11');
+ execute agregar_maestros (95,928,'Samantha','Paez','Rivera','IAD','Taller de ética','2AD11');
+ execute agregar_maestros (96,928,'Samantha','Paez','Rivera','IND','Taller de herramientas intelectuales','1I11');
+ execute agregar_maestros (97,928,'Samantha','Paez','Rivera','IAD','Taller de investigación I','6AD12');
+ execute agregar_maestros (98,651,'Leobardo','Morales','Ruiz','ISA','Fundamentos de dibujo','1SA11');
+ execute agregar_maestros (99,651,'Leobardo','Morales','Ruiz','ISA','Tecnología y comportamiento de materiales','2SA21');
+ execute agregar_maestros (100,651,'Leobardo','Morales','Ruiz','ISA','Estática mecánica de materiales','3SA11');  
+ execute agregar_maestros (101,651,'Leobardo','Morales','Ruiz','ISA','Diseño de elemento de máquinas','4SA11');
+ execute agregar_maestros (102,873,'Erika Guadalupe','Galicia','Herrera','ISA','Química aplicada a sistemas automotrices','1SA11');
+ execute agregar_maestros (103,873,'Erika Guadalupe','Galicia','Herrera','IND','Liderazgo','2I11');
+ execute agregar_maestros (104,873,'Erika Guadalupe','Galicia','Herrera','IND','Fundamentos de investigación','1I11');
+ execute agregar_maestros (105,873,'Erika Guadalupe','Galicia','Herrera','TICS','Desarrollo de emprendedores','6T11');
+ execute agregar_maestros (106,913,'Jose','Perez','Callejas','ISA','Mecánica de fluidos','4SA11');
+ execute agregar_maestros (107,913,'Jose','Perez','Callejas','IER','Refrigeracion de aire acondicionado','6E11');
+ execute agregar_maestros (108,913,'Jose','Perez','Callejas','ISA','Calculo integral','2SA21');
+ execute agregar_maestros (109,173,'Silvino','Perez','Alvarez','LC','Costos históricos','4C21');
+ execute agregar_maestros (110,173,'Silvino','Perez','Alvarez','LC','Impuestos predeterminados','6C21');
+ execute agregar_maestros (111,173,'Silvino','Perez','Alvarez','LC','Planeación','7C11');
+ execute agregar_maestros (112,530,'José Luis','Rocha','Lijandro','LC','Análisis de estados financieros','4C12');
+ execute agregar_maestros (113,530,'José Luis','Rocha','Lijandro','LC','Contabilidad internacional','6C11');
+ execute agregar_maestros (114,530,'José Luis','Rocha','Lijandro','LC','Gestión empresarial del factor humano','8C12');
+ execute agregar_maestros (115,530,'José Luis','Rocha','Lijandro','LC','Contabilidad financiera I','2C11');
+ execute agregar_maestros (116,530,'José Luis','Rocha','Lijandro','LC','Contabilidad financiera II','3C11');
+ execute agregar_maestros (117,530,'José Luis','Rocha','Lijandro','LC','Costos industriales','3C11');
+ execute agregar_maestros (118,600,'Antonio','Palafox','Castañeda','LC','Tecnología empleada en la gestión empresarial','8C11');
+ execute agregar_maestros (119,600,'Antonio','Palafox','Castañeda','LC','Administración estratégica','6C11');
+ execute agregar_maestros (120,600,'Antonio','Palafox','Castañeda','LC','Seminario de contaduría','7C11');
+ execute agregar_maestros (121,600,'Antonio','Palafox','Castañeda','LC','Administración de la producción de operaciones','5C11');
+ execute agregar_maestros (122,415,'Juan Carlos','Martinez','Hernandez','IER','Sistemas termicos','6E11');
+ execute agregar_maestros (123,415,'Juan Carlos','Martinez','Hernandez','IER','Termodinamica','4E11');
+ execute agregar_maestros (124,415,'Juan Carlos','Martinez','Hernandez','IER','Macromoleculas','8E11');
+ 
+
+/*ISC*/
+/*Se crea la funcion agregandole un nombre, dentro de la cual se puede agregar o actualizar el procedimiento almacenado*/
+ create table prof_ISC(
+id number (3),
+Num_empleado number (11) ,
+Nombre varchar2 (60),
+Apellidos varchar2 (60),
+Carrera varchar2 (30),
+Nombre_clase varchar  (60),
+grupo varchar (9)
+);
+ 
+drop table prof_ISC;
+/*Se crea la funcion agregandole un nombre, dentro de la cual se puede agregar o actualizar el procedimiento almacenado*/
+create or replace procedure profes_ISC
+as
+begin
+insert into  prof_ISC (id, Num_empleado, Nombre,Apellidos, Carrera, Nombre_clase,grupo)/* se insertaran en la tabla creada de sistemas los campos que se seleccionaron de la tabla principal */
+select id, Num_empleado, Nombre, Apell_pa | | ' ' | |  Apell_ma, Carrera, Nombre_clase,grupo  from profe_tesoem  /* se van a seleccionar los campos que se mandaran a traer de la tabla principial de profesores, concatenando unicamente apellido materno y apellido paterno*/
+where Carrera = 'ISC';/*en donde unicamente llamara a los profesores que den alguna materia en la carrera "ISC" que son todos los de sistemas */
+end;/*finaliza la funcion*/
+
+execute profes_ISC;/* es para ejecutar el procedimiento almacenado*/
+select* from prof_ISC;/* para seleccionar la tabla de sistemas en donde apareceran todos los profesores que den alguna materia en esta carrera*/ 
+delete from prof_ISC;/* se borra el contenido de la tabla*/
+
+/*En cada una de las tablas de las carreras es practicamente lo mismo solo que cambia los nombres de tablas y procedimientos, y los datos de los profesores*/
+/*TICS*/
+create table prof_TICS(
+id number (3)  unique,
+Num_empleado number (9)not null ,
+Nombre varchar2 (60),
+Apellidos varchar2 (60),
+Carrera varchar2 (30),
+Nombre_clase varchar  (60),
+grupo varchar (5)
+);
+
+create or replace procedure profes_TICS
+as
+begin
+insert into prof_TICS (id, Num_empleado, Nombre,Apellidos, Carrera, Nombre_clase,grupo)
+select id, Num_empleado, Nombre,  Apell_pa | | ' ' | |  Apell_ma, Carrera, Nombre_clase,grupo  from profe_tesoem 
+where Carrera = 'TICS';
+end;
+
+execute profes_TICS;
+select* from prof_TICS;
+delete from prof_TICS;
+
+/*Contabilidad*/
+create table prof_C(
+id number (3) unique,
+Num_empleado number (9) not null,
+Nombre varchar2 (60),
+Apellidos varchar2 (60),
+Carrera varchar2 (30),
+Nombre_clase varchar  (60),
+grupo varchar (5)
+);
+
+create or replace procedure profes_C
+as
+begin
+insert into prof_C (id, Num_empleado, Nombre,Apellidos, Carrera, Nombre_clase,grupo)
+select id, Num_empleado, Nombre, Apell_pa | | ' ' | |  Apell_ma, Carrera, Nombre_clase,grupo  from profe_tesoem 
+where Carrera = 'LC';
+end;
+
+execute profes_C;
+select* from prof_C;
+delete from prof_C;
+
+
+/* Gastronomía*/
+create table prof_G(
+id number (3) unique,
+Num_empleado number (9)not null ,
+Nombre varchar2 (60),
+Apellidos varchar2 (60),
+Carrera varchar2 (30),
+Nombre_clase varchar  (60),
+grupo varchar (5)
+);
+ 
+create or replace procedure profes_G
+as
+begin
+insert into prof_G (id, Num_empleado, Nombre,Apellidos, Carrera, Nombre_clase,grupo)
+select id, Num_empleado, Nombre, Apell_pa | | ' ' | |  Apell_ma, Carrera, Nombre_clase,grupo  from profe_tesoem 
+where Carrera = 'LG';
+end;
+
+execute profes_G;
+select* from prof_G;
+delete from prof_G;
+
+/* Industrial*/
+create table prof_IND(
+id number (3) unique,
+Num_empleado number (9)not null ,
+Nombre varchar2 (60),
+Apellidos varchar2 (60),
+Carrera varchar2 (30),
+Nombre_clase varchar  (60),
+grupo varchar (5)
+);
+ 
+create or replace procedure profes_IND
+as
+begin
+insert into prof_IND (id, Num_empleado, Nombre,Apellidos, Carrera, Nombre_clase,grupo)
+select id, Num_empleado, Nombre, Apell_pa | | ' ' | |  Apell_ma, Carrera, Nombre_clase,grupo  from profe_tesoem 
+where Carrera = 'IND';
+end;
+
+execute profes_IND;
+select* from prof_IND;
+delete from prof_IND;
+
+/* Energias Renovables*/
+create table prof_ER(
+id number (3) unique,
+Num_empleado number (9)not null ,
+Nombre varchar2 (60),
+Apellidos varchar2 (60),
+Carrera varchar2 (30),
+Nombre_clase varchar  (60),
+grupo varchar (5)
+);
+ 
+create or replace procedure profes_ER
+as
+begin
+insert into prof_ER (id, Num_empleado, Nombre,Apellidos, Carrera, Nombre_clase,grupo)
+select id, Num_empleado, Nombre, Apell_pa | | ' ' | |  Apell_ma, Carrera, Nombre_clase,grupo  from profe_tesoem 
+where Carrera = 'IER';
+end;
+
+execute profes_ER;
+select* from prof_ER;
+delete from prof_ER;
+
+/* Administración*/
+create table prof_IAD(
+id number (3) unique,
+Num_empleado number (9)not null ,
+Nombre varchar2 (60),
+Apellidos varchar2 (60),
+Carrera varchar2 (30),
+Nombre_clase varchar  (60),
+grupo varchar (5)
+);
+ 
+create or replace procedure profes_IAD
+as
+begin
+insert into prof_IAD (id, Num_empleado, Nombre,Apellidos, Carrera, Nombre_clase,grupo)
+select id, Num_empleado, Nombre, Apell_pa | | ' ' | |  Apell_ma, Carrera, Nombre_clase,grupo  from profe_tesoem 
+where Carrera = 'IAD';
+end;
+
+execute profes_IAD;
+select* from prof_IAD;
+delete from prof_IAD;
+
+/*Sistemas Automotrices*/
+create table prof_ISA(
+id number (3)  unique,
+Num_empleado number (9)not null ,
+Nombre varchar2 (60),
+Apellidos varchar2 (60),
+Carrera varchar2 (30),
+Nombre_clase varchar  (60),
+grupo varchar (5)
+);
+ 
+create or replace procedure profes_ISA
+as
+begin
+insert into prof_ISA (id, Num_empleado, Nombre,Apellidos, Carrera, Nombre_clase,grupo)
+select id, Num_empleado, Nombre, Apell_pa | | ' ' | |  Apell_ma, Carrera, Nombre_clase,grupo  from profe_tesoem 
+where Carrera = 'ISA';
+end;
+
+execute profes_ISA;
+select* from prof_ISA;
+delete from prof_ISA;
+
+/* Ambiental*/
+ create table prof_AMB(
+ id number (3) unique,
+Num_empleado number (9) not null ,
+Nombre varchar2 (60),
+Apellidos varchar2 (60),
+Carrera varchar2 (30),
+Nombre_clase varchar  (60),
+grupo varchar (5)
+);
+ 
+create or replace procedure profes_AMB
+as
+begin
+insert into prof_AMB (id, Num_empleado, Nombre,Apellidos, Carrera, Nombre_clase,grupo)
+select id, Num_empleado, Nombre, Apell_pa | | ' ' | |  Apell_ma, Carrera, Nombre_clase,grupo  from profe_tesoem  
+where Carrera = 'IA';
+end;
+
+execute profes_AMB;
+select * from prof_AMB;
+delete from prof_AMB; 
+
+/*Crear una funcion para determinar si son aptos a tener becas los alumnos del tesoem*/
+/*Beca del 100*/
+create table todo (
+id number (5) unique,
+Matricula number (10) not null,
+Nombre varchar2 (70),
+Apellidos varchar2 (70),
+Carrera varchar2 (30),
+Semestre number (3),
+Promedio number (3)
+);
+
+/* se crea el procedicimiento almacenado */
+create or replace procedure tododesc
+as
+begin
+insert into todo (id, matricula, Nombre,Apellidos, Carrera, Semestre, Promedio)/*se insertar los datos de la tabla creada*/
+select id, Matricula, Nombre, Apell_pa ||' '||  Apell_ma, Carrera, Semestre, Promedio  from alum_tesoem /*posteriormente se van a seleccionar los datos de la tabla principal de alumnos */
+where Promedio >=95; /* en donde todos los alumnos que tengan un promedio de 95 o mas  seran beneficiados por la beca del 100 */
+end;/* fin del procedimiento*/
+
+execute tododesc;/* ejecutar el procedimiento*/
+select* from todo;/* selecciona la tabla y muestra todos los alumnos beneficiados por la beca*/
+delete from todo;/* borra conbtenido de la tablas*/
+
+
+/*En todas los procedimientos de las becas es lo mismo solo que unicamente cambia el  la condicion en donde cambia el promedio y de ahi se seleccionan los alumnos de la tabla principal que seran beneficiados de esa beca dependiendo de su promedio*/
+/*Beca del 75*/
+create table scdesc (
+id number (5) unique,
+Matricula number (10) not null,
+Nombre varchar2 (70),
+Apellidos varchar2 (70),
+Carrera varchar2 (30),
+Semestre number (3),
+Promedio number (3)
+);
+
+create or replace procedure scde
+as
+begin
+insert into scdesc (id, matricula, Nombre,Apellidos, Carrera, Semestre, Promedio)
+select id, Matricula, Nombre, Apell_pa ||' '||  Apell_ma, Carrera, Semestre, Promedio  from alum_tesoem 
+where Promedio >=92 and Promedio <95;/*se seleccionan los alumnos en donde tengan un promedio mayor igual a 92, pero menor a  95*/
+end;
+
+execute scde;
+select* from scdesc;
+delete from scdesc;
+
+
+/*Beca del 50*/
+create table cidesc (
+id number (5) unique,
+Matricula number (10) not null,
+Nombre varchar2 (70),
+Apellidos varchar2 (70),
+Carrera varchar2 (30),
+Semestre number (3),
+Promedio number (3)
+);
+
+create or replace procedure cide
+as
+begin
+insert into cidesc (id, matricula, Nombre,Apellidos, Carrera, Semestre, Promedio)
+select id, Matricula, Nombre, Apell_pa ||' '||  Apell_ma, Carrera, Semestre, Promedio  from alum_tesoem 
+where Promedio >=90 and Promedio <92; /*se seleccionan los alumnos que tengan promedio mayor igual a 90 pero menos de 92 teniendo una beca del 50%*/
+end;
+
+execute cide;
+select* from cidesc;
+delete from cidesc;
+
+/*Beca del 35*/
+create table tcdesc (
+id number (5) unique,
+Matricula number (10) not null,
+Nombre varchar2 (70),
+Apellidos varchar2 (70),
+Carrera varchar2 (30),
+Semestre number (3),
+Promedio number (3)
+);
+
+create or replace procedure tcde
+as
+begin
+insert into tcdesc (id, matricula, Nombre,Apellidos, Carrera, Semestre, Promedio)
+select id, Matricula, Nombre, Apell_pa ||' '||  Apell_ma, Carrera, Semestre, Promedio  from alum_tesoem 
+where Promedio >=87 and Promedio <90; selecciona los alumnos
+end;
+
+execute tcde;
+select* from tcdesc;
+delete from tcdesc;
+
+/*Beca del 25*/
+create table vcdesc (
+id number (5) unique,
+Matricula number (10) not null,
+Nombre varchar2 (70),
+Apellidos varchar2 (70),
+Carrera varchar2 (30),
+Semestre number (3),
+Promedio number (3)
+);
+
+drop table vcdesc;
+
+create or replace procedure vcde
+as
+begin
+insert into vcdesc (id, matricula, Nombre,Apellidos, Carrera, Semestre, Promedio)
+select id, Matricula, Nombre, Apell_pa ||' '||  Apell_ma, Carrera, Semestre, Promedio  from alum_tesoem 
+where Promedio >=84 and Promedio <87; /*se seleccionan los alumnos donde tengan un promedieo mayor igual a 84 y menor a 87, teniendo uma beca del 25% de descuento*/
+end;
+
+execute vcde;
+select* from vcdesc;
+delete from vcdesc;
+
+/*Beca del 10*/
+create table ddesc (
+id number (5) unique,
+Matricula number (10) not null,
+Nombre varchar2 (70),
+Apellidos varchar2 (70),
+Carrera varchar2 (30),
+Semestre number (3),
+Promedio number (3)
+);
+
+drop table ddesc;
+
+create or replace procedure dde
+as
+begin
+insert into ddesc (id, matricula, Nombre,Apellidos, Carrera, Semestre, Promedio)
+select id, Matricula, Nombre, Apell_pa ||' '||  Apell_ma, Carrera, Semestre, Promedio  from alum_tesoem 
+where Promedio >=80 and Promedio <84; /*los alumnos con promedio mayor de igual a 80 y menos de 84 son seleccioandos para obtener una beca del 10%*/
+end;
+
+execute dde;
+select* from ddesc;
+delete from ddesc;
+
+/*Sin beca*/
+create table sndesc (
+id number (5) unique,
+Matricula number (10) not null,
+Nombre varchar2 (70),
+Apellidos varchar2 (70),
+Carrera varchar2 (30),
+Semestre number (3),
+Promedio number (3)
+);
+
+drop table sndesc;
+
+create or replace procedure snde
+as
+begin
+insert into sndesc (id, matricula, Nombre,Apellidos, Carrera, Semestre, Promedio)
+select id, Matricula, Nombre, Apell_pa ||' '||  Apell_ma, Carrera, Semestre, Promedio  from alum_tesoem 
+where Promedio <80; /*los alumnos con un promedido menor a 80 no reciben algun tipo de beca*/
+end;
+
+execute snde;
+select* from sndesc;
+delete from sndesc;
+
+
+
+
